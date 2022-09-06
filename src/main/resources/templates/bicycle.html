@@ -1,0 +1,27 @@
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/commons::myHead"></head>
+
+<body>
+<div class="wrapper">
+    <!-- Navigation -->
+    <header>
+        <nav class="main-nav" th:replace="fragments/commons::myNavigation"></nav>
+    </header>
+
+    <section class="road" th:each="route : ${filteredRoutes}" th:object="${route}">
+        <div>
+            <h2 th:text="*{name}">Title</h2>
+            <p th:text="*{description}">Very long description</p>
+            <a th:href="@{/routes/details/{id}(id=*{id})}" class="btn">Learn More</a>
+        </div>
+        <img class="rounded-circle w-75 ml-5" th:src="*{picture.url}" th:alt="*{picture.title}">
+    </section>
+</div>
+<!-- Wrapper Ends -->
+</body>
+
+<footer class="footer bg-blur rounded" th:replace="fragments/commons::myFooter"></footer>
+
+</html>
